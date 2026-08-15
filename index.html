@@ -3,668 +3,1113 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Questions for Bhumi 💖</title>
+<title>20,000 Questions for Bhumi 💖 | Ultimate Love Edition</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
 <style>
-  :root{
-    --bg-deep:#180d28;
-    --bg-deep-2:#2b1842;
-    --pink:#FF7597;
-    --pink-glow:#ff4d79;
-    --pink-soft:#FFB5CC;
-    --gold:#FFD166;
-    --lavender:#C3B1E1;
-    --cream:#FFF5EB;
-    --muted:#AFA0C5;
-  }
-  *{box-sizing:border-box;}
-  html,body{margin:0;padding:0;}
-  body{
-    min-height:100vh;
-    background:radial-gradient(circle at 50% 20%, var(--bg-deep-2), var(--bg-deep) 75%);
-    font-family:'Nunito',sans-serif;
-    color:var(--cream);
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    overflow-x:hidden;
-    position:relative;
+  :root {
+    --bg-deep: #140822;
+    --bg-deep-2: #26113b;
+    --pink: #FF6584;
+    --pink-glow: #ff3366;
+    --pink-soft: #FFB3C6;
+    --gold: #FFD166;
+    --lavender: #C4B5FD;
+    --cream: #FFF7F0;
+    --muted: #A797BD;
+    --card-bg: rgba(255, 255, 255, 0.055);
+    --border-color: rgba(255, 255, 255, 0.12);
   }
 
-  /* floating background particles */
-  .heart{
-    position:fixed;
-    top:110vh;
-    font-size:20px;
-    opacity:0.55;
-    pointer-events:none;
-    animation:floatUp linear infinite;
-    color:var(--pink-soft);
-    user-select:none;
-    z-index:1;
-  }
-  @keyframes floatUp{
-    0%{ transform:translateY(0) rotate(0deg) scale(0.8); opacity:0;}
-    12%{ opacity:0.65; }
-    85%{ opacity:0.5; }
-    100%{ transform:translateY(-125vh) rotate(35deg) scale(1.15); opacity:0;}
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
   }
 
-  .stage{
-    position:relative;
-    width:100%;
-    max-width:540px;
-    padding:24px 20px;
-    z-index:2;
+  body {
+    min-height: 100vh;
+    background: radial-gradient(circle at 50% 12%, var(--bg-deep-2), var(--bg-deep) 80%);
+    font-family: 'Nunito', sans-serif;
+    color: var(--cream);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow-x: hidden;
+    position: relative;
+    padding: 16px;
   }
 
-  .card{
-    background:rgba(255,255,255,0.045);
-    border:1px solid rgba(255,255,255,0.12);
-    backdrop-filter:blur(16px);
-    -webkit-backdrop-filter:blur(16px);
-    border-radius:32px;
-    padding:40px 32px 34px;
-    text-align:center;
-    box-shadow:0 24px 60px rgba(0,0,0,0.45), 0 0 40px rgba(255,117,151,0.08);
-    position:relative;
-    overflow:hidden;
-    transition:box-shadow 0.3s ease;
+  /* Floating Hearts Background */
+  .heart-particle {
+    position: fixed;
+    top: 110vh;
+    font-size: 18px;
+    opacity: 0.55;
+    pointer-events: none;
+    animation: floatUp linear infinite;
+    user-select: none;
+    z-index: 1;
+  }
+  @keyframes floatUp {
+    0% { transform: translateY(0) rotate(0deg) scale(0.8); opacity: 0; }
+    15% { opacity: 0.65; }
+    85% { opacity: 0.5; }
+    100% { transform: translateY(-125vh) rotate(40deg) scale(1.15); opacity: 0; }
   }
 
-  .dots{
-    display:flex;
-    flex-wrap:wrap;
-    justify-content:center;
-    align-items:center;
-    gap:6px;
-    margin-bottom:24px;
-    max-width:420px;
-    margin-left:auto;
-    margin-right:auto;
-  }
-  .dot{
-    width:7px;
-    height:7px;
-    border-radius:50%;
-    background:rgba(255,255,255,0.18);
-    transition:all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
-  }
-  .dot.active{
-    background:var(--gold);
-    width:22px;
-    border-radius:10px;
-    box-shadow:0 0 10px rgba(255,209,102,0.6);
-  }
-  .dot.done{
-    background:var(--pink);
-    box-shadow:0 0 6px rgba(255,117,151,0.4);
+  /* Top Control Bar */
+  .top-bar {
+    width: 100%;
+    max-width: 580px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+    z-index: 10;
+    padding: 0 4px;
+    gap: 8px;
   }
 
-  .eyebrow{
-    font-family:'Fredoka',sans-serif;
-    font-size:12px;
-    font-weight:600;
-    letter-spacing:0.14em;
-    text-transform:uppercase;
-    color:var(--lavender);
-    margin:0 0 10px;
-    display:inline-block;
-    padding:4px 14px;
-    background:rgba(255,255,255,0.06);
-    border-radius:20px;
-    border:1px solid rgba(255,255,255,0.08);
+  .stat-pill {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid var(--border-color);
+    padding: 6px 14px;
+    border-radius: 999px;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--gold);
+    backdrop-filter: blur(8px);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    white-space: nowrap;
   }
 
-  .question{
-    font-family:'Fredoka',sans-serif;
-    font-weight:500;
-    font-size:24px;
-    line-height:1.4;
-    margin:10px 0 26px;
-    color:var(--cream);
-    min-height:68px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
+  .control-btns {
+    display: flex;
+    gap: 8px;
   }
 
-  .btn-row{
-    position:relative;
-    height:160px;
-    width:100%;
-    margin-top:6px;
+  .icon-btn {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid var(--border-color);
+    color: var(--cream);
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 15px;
+    transition: all 0.2s ease;
+  }
+  .icon-btn:hover {
+    background: rgba(255, 255, 255, 0.18);
+    transform: scale(1.08);
   }
 
-  button{
-    font-family:'Fredoka',sans-serif;
-    font-weight:600;
-    font-size:16px;
-    border-radius:999px;
-    padding:14px 28px;
-    border:none;
-    cursor:pointer;
-    position:absolute;
-    user-select:none;
-    -webkit-user-select:none;
-    touch-action:manipulation;
-    white-space:nowrap;
+  /* Main Stage & Card */
+  .stage {
+    position: relative;
+    width: 100%;
+    max-width: 580px;
+    z-index: 2;
   }
 
-  .yes-btn{
-    background:linear-gradient(135deg, #FF85A2, #FF4B72);
-    color:#2A0413;
-    box-shadow:0 8px 24px rgba(255,75,114,0.4);
-    transition:transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.2s ease, left 0.2s ease, top 0.2s ease;
-    z-index:5;
-  }
-  .yes-btn:hover{
-    box-shadow:0 12px 30px rgba(255,75,114,0.6);
-  }
-  .yes-btn:active{
-    transform:scale(0.96) !important;
-  }
-
-  .no-btn{
-    background:rgba(255,255,255,0.09);
-    border:1px solid rgba(255,255,255,0.18);
-    color:var(--cream);
-    box-shadow:0 4px 14px rgba(0,0,0,0.25);
-    transition:left 0.18s cubic-bezier(0.2, 0.9, 0.3, 1), top 0.18s cubic-bezier(0.2, 0.9, 0.3, 1), transform 0.15s ease, background 0.2s ease;
-    z-index:10;
-  }
-  .no-btn.panicking{
-    animation:shake 0.3s ease-in-out;
-  }
-  @keyframes shake{
-    0%,100%{transform:rotate(0deg);}
-    25%{transform:rotate(-8deg) scale(1.05);}
-    75%{transform:rotate(8deg) scale(1.05);}
+  .card {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-radius: 32px;
+    padding: 32px 26px 26px;
+    text-align: center;
+    box-shadow: 0 24px 60px rgba(0,0,0,0.5), 0 0 50px rgba(255,101,132,0.12);
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
   }
 
-  .taunt{
-    font-size:13.5px;
-    color:var(--gold);
-    min-height:22px;
-    margin-top:14px;
-    font-style:italic;
-    letter-spacing:0.02em;
-    transition:opacity 0.2s ease;
+  /* Progress Bar & Badges */
+  .progress-wrap {
+    margin-bottom: 18px;
+  }
+  .progress-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 12.5px;
+    font-weight: 700;
+    color: var(--lavender);
+    margin-bottom: 6px;
+    letter-spacing: 0.04em;
+  }
+  .question-indicator-badge {
+    background: rgba(255, 209, 102, 0.12);
+    border: 1px solid rgba(255, 209, 102, 0.3);
+    color: var(--gold);
+    padding: 3px 10px;
+    border-radius: 999px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  .question-indicator-badge:hover {
+    background: rgba(255, 209, 102, 0.25);
+    transform: scale(1.05);
+  }
+  .progress-bar-bg {
+    width: 100%;
+    height: 8px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 999px;
+    overflow: hidden;
+    position: relative;
+  }
+  .progress-bar-fill {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, #FF6584, #FFD166);
+    border-radius: 999px;
+    transition: width 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    box-shadow: 0 0 10px rgba(255, 101, 132, 0.6);
   }
 
-  /* Final screen */
-  .final{
-    display:none;
-    animation:fadeIn 0.5s ease-out;
-  }
-  .final.show{
-    display:block;
-  }
-  @keyframes fadeIn{
-    from{opacity:0; transform:translateY(12px);}
-    to{opacity:1; transform:translateY(0);}
-  }
-
-  .final .title{
-    font-family:'Fredoka',sans-serif;
-    font-size:32px;
-    font-weight:700;
-    margin-bottom:16px;
-    color:var(--gold);
-    text-shadow:0 4px 18px rgba(255,209,102,0.3);
-  }
-  .final p{
-    font-size:16.5px;
-    line-height:1.65;
-    color:var(--cream);
-    margin-bottom:8px;
-  }
-  .final .heart-icon{
-    font-size:58px;
-    margin-bottom:12px;
-    display:inline-block;
-    animation:pulse 1.1s ease-in-out infinite;
-  }
-  @keyframes pulse{
-    0%,100%{transform:scale(1);}
-    50%{transform:scale(1.16);}
+  .eyebrow-badge {
+    font-family: 'Fredoka', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--lavender);
+    display: inline-block;
+    padding: 4px 14px;
+    background: rgba(255, 255, 255, 0.07);
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.09);
+    margin-bottom: 10px;
   }
 
-  .signature{
-    margin-top:28px;
-    font-size:13.5px;
-    color:var(--muted);
-    letter-spacing:0.04em;
+  .question {
+    font-family: 'Fredoka', sans-serif;
+    font-weight: 500;
+    font-size: 22.5px;
+    line-height: 1.42;
+    margin: 4px 0 18px;
+    color: var(--cream);
+    min-height: 68px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 6px;
   }
 
-  .restart-btn{
-    margin-top:20px;
-    position:static;
-    display:inline-block;
-    background:rgba(255,255,255,0.08);
-    border:1px solid rgba(255,255,255,0.2);
-    color:var(--cream);
-    padding:10px 24px;
-    font-size:14px;
-    border-radius:20px;
-    transition:all 0.2s ease;
-  }
-  .restart-btn:hover{
-    background:rgba(255,255,255,0.16);
-    transform:scale(1.04);
+  .btn-row {
+    position: relative;
+    height: 165px;
+    width: 100%;
+    margin-top: 4px;
   }
 
-  .q-block{
-    display:none;
-  }
-  .q-block.active{
-    display:block;
-    animation:fadeIn 0.3s ease-out;
+  button.choice-btn {
+    font-family: 'Fredoka', sans-serif;
+    font-weight: 600;
+    font-size: 15.5px;
+    border-radius: 999px;
+    padding: 13px 26px;
+    border: none;
+    cursor: pointer;
+    position: absolute;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    white-space: nowrap;
   }
 
-  @media (max-width:480px){
-    .card{padding:30px 18px 24px; border-radius:24px;}
-    .question{font-size:20px; min-height:60px;}
-    button{padding:12px 22px; font-size:14.5px;}
-    .btn-row{height:175px;}
+  .yes-btn {
+    background: linear-gradient(135deg, #FF6584, #FF3366);
+    color: #FFF;
+    box-shadow: 0 8px 24px rgba(255, 51, 102, 0.4);
+    transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.2s ease, left 0.2s ease, top 0.2s ease;
+    z-index: 5;
+  }
+  .yes-btn:hover {
+    box-shadow: 0 12px 30px rgba(255, 51, 102, 0.65);
+  }
+  .yes-btn:active {
+    transform: scale(0.95) !important;
+  }
+
+  .no-btn {
+    background: rgba(255, 255, 255, 0.09);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    color: var(--cream);
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+    transition: left 0.18s cubic-bezier(0.2, 0.9, 0.3, 1), top 0.18s cubic-bezier(0.2, 0.9, 0.3, 1), transform 0.15s ease, background 0.2s ease;
+    z-index: 10;
+  }
+  .no-btn.panicking {
+    animation: shake 0.3s ease-in-out;
+  }
+  @keyframes shake {
+    0%, 100% { transform: rotate(0deg); }
+    25% { transform: rotate(-8deg) scale(1.04); }
+    75% { transform: rotate(8deg) scale(1.04); }
+  }
+
+  .taunt-box {
+    font-size: 13.5px;
+    color: var(--gold);
+    min-height: 22px;
+    margin-top: 10px;
+    font-style: italic;
+    letter-spacing: 0.02em;
+    transition: opacity 0.2s ease;
+  }
+
+  /* Bottom Navigation Toolbar */
+  .nav-toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 20px;
+    padding-top: 16px;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  .nav-btn {
+    background: rgba(255, 255, 255, 0.07);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    color: var(--cream);
+    padding: 8px 16px;
+    font-size: 13px;
+    font-weight: 700;
+    border-radius: 999px;
+    cursor: pointer;
+    font-family: 'Fredoka', sans-serif;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+  .nav-btn:hover:not(:disabled) {
+    background: rgba(255, 255, 255, 0.16);
+    border-color: var(--pink);
+    transform: translateY(-1px);
+  }
+  .nav-btn:disabled {
+    opacity: 0.35;
+    cursor: not-allowed;
+  }
+
+  .nav-group-center {
+    display: flex;
+    gap: 6px;
+  }
+
+  /* Badge unlock popup */
+  .badge-popup {
+    position: fixed;
+    top: 20px;
+    background: rgba(38, 17, 59, 0.95);
+    border: 1px solid var(--gold);
+    padding: 12px 22px;
+    border-radius: 999px;
+    color: var(--gold);
+    font-weight: 700;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5), 0 0 20px rgba(255, 209, 102, 0.4);
+    z-index: 100;
+    transform: translateY(-80px);
+    opacity: 0;
+    transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+  .badge-popup.show {
+    transform: translateY(0);
+    opacity: 1;
+  }
+
+  /* Modals */
+  .modal-overlay {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(10, 4, 18, 0.85);
+    backdrop-filter: blur(10px);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 200;
+    padding: 16px;
+  }
+  .modal-overlay.open {
+    display: flex;
+  }
+  .modal-box {
+    background: #241138;
+    border: 1px solid var(--border-color);
+    border-radius: 28px;
+    max-width: 440px;
+    width: 100%;
+    padding: 28px 24px;
+    text-align: center;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.6);
+  }
+  .modal-box h3 {
+    font-family: 'Fredoka', sans-serif;
+    font-size: 24px;
+    color: var(--gold);
+    margin-bottom: 12px;
+  }
+  .modal-box p {
+    font-size: 14px;
+    color: var(--muted);
+    margin-bottom: 18px;
+    line-height: 1.5;
+  }
+
+  .jump-input-wrap {
+    display: flex;
+    gap: 8px;
+    margin: 16px 0;
+    justify-content: center;
+  }
+  .jump-input {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid var(--border-color);
+    border-radius: 14px;
+    color: #FFF;
+    font-family: 'Fredoka', sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    padding: 10px 16px;
+    width: 150px;
+    text-align: center;
+    outline: none;
+  }
+  .jump-input:focus {
+    border-color: var(--pink);
+    box-shadow: 0 0 10px rgba(255, 101, 132, 0.4);
+  }
+
+  .action-row {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 18px;
+    flex-wrap: wrap;
+  }
+  .action-btn {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: var(--cream);
+    padding: 10px 20px;
+    font-size: 14px;
+    font-weight: 600;
+    border-radius: 999px;
+    cursor: pointer;
+    font-family: 'Fredoka', sans-serif;
+    transition: all 0.2s ease;
+  }
+  .action-btn:hover {
+    background: rgba(255, 255, 255, 0.16);
+    transform: scale(1.04);
+  }
+  .action-btn.primary {
+    background: linear-gradient(135deg, #FF6584, #FF3366);
+    color: #FFF;
+    border: none;
+    box-shadow: 0 6px 20px rgba(255, 51, 102, 0.4);
+  }
+
+  @media (max-width: 480px) {
+    .card { padding: 26px 18px 20px; border-radius: 26px; }
+    .question { font-size: 19px; min-height: 60px; }
+    button.choice-btn { padding: 12px 20px; font-size: 14px; }
+    .btn-row { height: 170px; }
+    .nav-btn { padding: 7px 12px; font-size: 12px; }
   }
 </style>
 </head>
 <body>
 
+<!-- Badge Notification -->
+<div class="badge-popup" id="badgePopup">
+  <span id="badgeIcon">🏆</span>
+  <span id="badgeText">New Achievement Unlocked!</span>
+</div>
+
+<!-- Top Stats & Controls -->
+<div class="top-bar">
+  <div class="stat-pill">
+    <span>💖</span> <span id="answeredCount">0</span> Yeses
+  </div>
+  <div class="stat-pill">
+    <span>🏃</span> <span id="dodgedCount">0</span> Dodges
+  </div>
+  <div class="control-btns">
+    <button class="icon-btn" id="soundToggle" title="Toggle Sound">🔊</button>
+    <button class="icon-btn" id="jumpModalBtn" title="Jump to Question #">🔢</button>
+    <button class="icon-btn" id="settingsBtn" title="Settings & Reset">⚙️</button>
+  </div>
+</div>
+
+<!-- Main Game Stage -->
 <div class="stage">
-  <div class="card" id="card">
+  <div class="card" id="mainCard">
 
-    <div class="dots" id="dots"></div>
+    <!-- Progress section -->
+    <div class="progress-wrap" id="progressWrap">
+      <div class="progress-header">
+        <span id="streakDisplay">🌟 Love Streak: 0</span>
+        <span class="question-indicator-badge" id="progressText" onclick="openJumpModal()" title="Click to Jump to any Question">Question 1 of 20,000 ↗</span>
+      </div>
+      <div class="progress-bar-bg">
+        <div class="progress-bar-fill" id="progressBar"></div>
+      </div>
+    </div>
 
-    <div id="questions"></div>
+    <!-- Active Question View -->
+    <div id="questionContainer">
+      <span class="eyebrow-badge" id="categoryBadge">Cute Everyday</span>
+      <div class="question" id="questionText">Loading cute questions for Bhumi...</div>
+      
+      <div class="btn-row" id="btnRow">
+        <button class="choice-btn yes-btn" id="yesBtn">Yes, obviously 💖</button>
+        <button class="choice-btn no-btn" id="noBtn">No 🙅‍♀️</button>
+      </div>
+      
+      <div class="taunt-box" id="tauntBox"></div>
 
-    <div class="final" id="final">
-      <div class="heart-icon">💖</div>
-      <div class="title">She said YES. Every single time! 🥰</div>
-      <p>You just officially agreed to all of it, Bhumi — the fries, the 47 daily texts, the playlists, and me.</p>
-      <p>It's in the contract now. No takebacks, no returns, and strictly no refunds! 🍟✨</p>
-      <div class="signature">Made with endless love by Yash ❤️</div>
-      <button class="restart-btn" onclick="restartQuiz()">Replay from start 🔁</button>
+      <!-- Navigation Bar (Back, Jump, Random, Next) -->
+      <div class="nav-toolbar">
+        <button class="nav-btn" id="prevBtn" onclick="prevQuestion()">
+          <span>⏮️</span> Prev
+        </button>
+
+        <div class="nav-group-center">
+          <button class="nav-btn" onclick="openJumpModal()">
+            <span>🔢</span> Jump #
+          </button>
+          <button class="nav-btn" onclick="randomQuestion()">
+            <span>🎲</span> Random
+          </button>
+        </div>
+
+        <button class="nav-btn" id="nextBtn" onclick="nextQuestion()">
+          Next <span>⏭️</span>
+        </button>
+      </div>
     </div>
 
   </div>
 </div>
 
+<!-- Jump to Question Modal -->
+<div class="modal-overlay" id="jumpModal">
+  <div class="modal-box">
+    <h3>🔢 Jump to Any Question</h3>
+    <p>Enter any question number from <strong>1</strong> to <strong>20,000</strong>:</p>
+    
+    <div class="jump-input-wrap">
+      <input type="number" id="jumpInput" class="jump-input" min="1" max="20000" placeholder="e.g. 777">
+    </div>
+
+    <div class="action-row">
+      <button class="action-btn" onclick="closeJumpModal()">Cancel</button>
+      <button class="action-btn primary" onclick="submitJump()">Jump Now 🚀</button>
+    </div>
+  </div>
+</div>
+
+<!-- Settings Modal -->
+<div class="modal-overlay" id="settingsModal">
+  <div class="modal-box">
+    <h3>⚙️ Settings & Progress</h3>
+    <p>Your question progress and statistics are automatically saved in real time across browser restarts.</p>
+    
+    <div class="action-row">
+      <button class="action-btn" onclick="resetAllData()" style="color:#ff7597; border-color: rgba(255,101,132,0.3);">🗑️ Reset All Progress</button>
+      <button class="action-btn primary" onclick="closeSettingsModal()">Close</button>
+    </div>
+  </div>
+</div>
+
 <script>
-  const questionPool = [
-    {
-      text: "Are you okay with me stealing fries off your plate, forever, no negotiation? 🍟",
-      yes: "Yes, obviously 🍟",
-      no: "Hands off 🛑",
-      taunts: ["Wait, think about the fries...", "You know you're saying yes to fries either way!", "The fries miss you already!"]
-    },
-    {
-      text: "Can I keep sending you an unreasonable number of good morning texts? 📱",
-      yes: "Please do 💕",
-      no: "Too many 📴",
-      taunts: ["The No button is shy today 🙈", "It dodges faster than your unread notifications!", "Your phone is buzzing in anticipation!"]
-    },
-    {
-      text: "Will you forgive my jokes even when they are, objectively, not funny? 🤡",
-      yes: "I'll pity laugh 😂",
-      no: "Never 🙅‍♀️",
-      taunts: ["The button refuses to be clicked 😆", "Even the button thinks my joke was decent!", "Come on, pity laughs count!"]
-    },
-    {
-      text: "Are you fine with me talking about EverTwo for way longer than anyone asked? 💻",
-      yes: "I'm all ears 🚀",
-      no: "Too nerdy 🥱",
-      taunts: ["The button ran out of excuses 🏃‍♂️", "It's hiding behind the code!", "Just nod and say yes!"]
-    },
-    {
-      text: "Will you pretend my singing is a feature and not a bug? 🎤",
-      yes: "Grammy worthy 🌟",
-      no: "My ears hurt 🙉",
-      taunts: ["The button is covering its ears too 🙉", "Give it a moment, it's recovering!", "You know you love my concerts!"]
-    },
-    {
-      text: "Can I explain something you didn't ask about for at least 10 whole minutes? 🤓",
-      yes: "Teach me 📖",
-      no: "I didn't ask ✋",
-      taunts: ["It's already regretting dodging 🏃‍♀️", "The button ran out of patience!", "You know you secretly like the trivia!"]
-    },
-    {
-      text: "Are you okay with 15 unsolicited photos of the sky in one single day? ☁️",
-      yes: "Send more clouds 🌤️",
-      no: "Storage full 📷",
-      taunts: ["It's hiding behind a cloud ☁️", "The button needs extra iCloud storage!", "Almost got it!"]
-    },
-    {
-      text: "Will you still hype me up when my code refuses to compile at 2 AM? 🐛",
-      yes: "You're a genius 🧠",
-      no: "Skill issue ❌",
-      taunts: ["The button also doesn't know what went wrong 💥", "It's debugging its own escape route!", "Syntax Error: 'No' not permitted!"]
-    },
-    {
-      text: "Can we make questionable midnight food combinations our whole personality? 🍕",
-      yes: "Order right now 🤤",
-      no: "Ew gross 🤢",
-      taunts: ["The button is judging the midnight menu 🍕", "It does not approve of pineapple either!", "One bite and you'll say yes!"]
-    },
-    {
-      text: "Are you fine with a 6-tab color-coded spreadsheet for planning our next trip? ✈️",
-      yes: "Color code it! 🗺️",
-      no: "Too intense 😴",
-      taunts: ["It's overwhelmed by the itinerary tabs 📊", "The button needs its own boarding pass!", "Pack your bags, say yes!"]
-    },
-    {
-      text: "Will you let me check 'did you eat?' every single day, annoyingly? 🍲",
-      yes: "Always ask 🥺",
-      no: "I'm not hungry 😠",
-      taunts: ["The button thinks that's kind of sweet, actually 🥺", "It's running out of reasons to dodge!", "Almost there, it's caving in!"]
-    },
-    {
-      text: "Can I keep being the excessively proud, loud one cheering for you in public? 📣",
-      yes: "Hype me up! 🥳",
-      no: "Embarrassing 🫣",
-      taunts: ["The button is getting embarrassed on your behalf 🙈", "It's still dodging, but barely!", "One more try, it's exhausted!"]
-    },
-    {
-      text: "Are you ready to share your hoodies, blankets, and snacks for eternity? 🧥",
-      yes: "They're yours 🥰",
-      no: "Get your own 🔒",
-      taunts: ["Hey, that oversized hoodie looks better on me anyway!", "The button stole the blanket and ran! 🏃", "Warmth is meant to be shared!"]
-    },
-    {
-      text: "Will you hold my hand even when it's awkwardly freezing cold? ❄️",
-      yes: "Warm it up 🤝",
-      no: "Don't touch me 🧊",
-      taunts: ["Ice hands need love too! 🥶", "The button slipped right out of your grasp!", "Hand warmers incoming!"]
-    },
-    {
-      text: "Are you secretly 100% obsessed with me? (Be completely honest) 😏",
-      yes: "Guilty as charged 💖",
-      no: "Not at all 🤥",
-      taunts: ["Lie detector test failed! 🚨", "Even the button knows you're bluffing!", "Caught in 4K! Say yes!"]
-    },
-    {
-      text: "Are you ever allowed to get tired of me? 🤔",
-      yes: "Never in a million years ♾️",
-      no: "Maybe tomorrow 🏃",
-      taunts: ["Nice try! Lifetime contract active 📜", "Dodged it! No escape route!", "You're stuck with me forever!"]
-    },
-    {
-      text: "Do you think anyone in the universe could ever love you more than I do? 🌌",
-      yes: "Literally impossible 🪐",
-      no: "Maybe someone 🛸",
-      taunts: ["Scientific fact: Impossible! 🔭", "The math does not compute! 📐", "Say yes to the galaxy!"]
-    },
-    {
-      text: "Will you be my favorite person, today, tomorrow, and every single day after? 💍",
-      yes: "Forever & always 💘",
-      no: "Nope 🏃‍♀️",
-      taunts: ["This one only has ONE correct answer 💝", "The button officially surrendered!", "Go on, press the big pink button!"]
-    }
-  ];
+/* =========================================================================
+   20,000 CUTE, SILLY & ROMANTIC QUESTIONS GENERATOR ENGINE
+   ========================================================================= */
+const TOTAL_QUESTIONS = 20000;
 
-  let questions = [...questionPool];
-  let current = 0;
-  let noAttempts = 0;
+// Curated core handcrafted questions for the first bank
+const coreQuestions = [
+  { text: "Are you okay with me stealing fries off your plate forever? 🍟", yes: "Yes, obviously 🍟", no: "Hands off 🛑", cat: "Food & Treats 🍟", taunts: ["Wait, think about the fries...", "You know you're sharing anyway!", "The fries miss you!"] },
+  { text: "Can I take a 'tiny bite' of your dessert that is actually half of it? 🍰", yes: "Take it all 🍰", no: "Order your own 🍰", cat: "Food & Treats 🍟", taunts: ["Dessert tastes better shared!", "It's love tax!", "Just one bite promise!"] },
+  { text: "Will you let me finish your drink when you say 'I can't finish this'? 🥤", yes: "Drink it up 🥤", no: "Don't touch 🧃", cat: "Food & Treats 🍟", taunts: ["Zero waste policy!", "Hydration partner for life!", "Slurp!"] },
+  { text: "Are we allowed to order pizza at 1 AM with extra garlic dip? 🍕", yes: "Order now 🍕", no: "Too late 😴", cat: "Food & Treats 🍟", taunts: ["Midnight snacks hit different!", "The pizza box is calling!", "Cheese pull awaits!"] },
+  { text: "Will you feed me a bite while I'm playing a game or working? 🥄", yes: "Open wide 🥄", no: "Starve 🙅‍♀️", cat: "Food & Treats 🍟", taunts: ["Airplane delivery incoming!", "Chomp chomp!", "Best girlfriend award!"] },
+  { text: "Can we spend 40 minutes debating what to eat only to pick our usual? 🌮", yes: "Every single time 🌮", no: "Pick faster ⏰", cat: "Food & Treats 🍟", taunts: ["The sacred ritual!", "Menu scrolling is cardio!", "Usual it is!"] },
+  { text: "Will you pretend not to notice when I eat the last piece of chocolate? 🍫", yes: "I saw that 🍫", no: "Give it back 😡", cat: "Food & Treats 🍟", taunts: ["What chocolate? It vanished!", "Magic trick!", "Sharing is caring!"] },
+  { text: "Are you fine with making ice cream runs in mismatched pajamas? 🍦", yes: "Let's go right now 🍦", no: "Change first 👗", cat: "Food & Treats 🍟", taunts: ["Pajama runs are peak romance!", "Two scoops please!", "Sprinkles included!"] },
+  { text: "Can I dip my nuggets into your sauce without asking? 🍗", yes: "Dip away 🍗", no: "Get your own sauce 🥫", cat: "Food & Treats 🍟", taunts: ["Sauce sharing is commitment!", "Double dipping allowed!", "Saucy!"] },
+  { text: "Will you make me maggi at 2 AM if I look at you with puppy eyes? 🍜", yes: "Already boiling water 🍜", no: "Cook yourself 👨‍🍳", cat: "Food & Treats 🍟", taunts: ["Puppy eyes too powerful!", "Extra masala time!", "Maggi master!"] },
+  { text: "Are you ready to share blankets even when I accidentally cocoon? 🛌", yes: "Take the blanket 🛌", no: "I need warmth 🥶", cat: "Cuddles & Sleep ☁️", taunts: ["Tug of war championship!", "Cozy burrito time!", "Warm toes guaranteed!"] },
+  { text: "Will you let me use your tummy or shoulder as a pillow? 🧸", yes: "Best pillow ever 🧸", no: "Too heavy 🪨", cat: "Cuddles & Sleep ☁️", taunts: ["Ergonomic girlfriend pillow!", "Maximum comfort achieved!", "Snooze mode!"] },
+  { text: "Can we stay in bed all Sunday doing absolutely nothing? ☁️", yes: "Dream Sunday ☁️", no: "Productive only 🏃‍♀️", cat: "Cuddles & Sleep ☁️", taunts: ["Rotting in bed together!", "Blanket fort activated!", "Pure bliss!"] },
+  { text: "Will you hold my cold hands in winter until they defrost? 🧤", yes: "Warming them up 🧤", no: "Ice monster 🧊", cat: "Cuddles & Sleep ☁️", taunts: ["Freezer hands need love!", "Defrosting in progress...", "Hand holding warmers!"] },
+  { text: "Are you fine with sleeping on call when we are tired? 🌙", yes: "Sweet dreams 🌙", no: "Hang up first 📵", cat: "Cuddles & Sleep ☁️", taunts: ["Sleepy breathing sounds!", "Night night Bhumi!", "Zzzzz..."] },
+  { text: "Can I pull you into one more hug when you're trying to leave? 🥰", yes: "One more minute 🥰", no: "Let me go 🏃‍♀️", cat: "Cuddles & Sleep ☁️", taunts: ["Five more seconds please!", "Hug trap activated!", "Can't escape the hug!"] },
+  { text: "Can I keep spamming you with 47 Reels every single day? 📲", yes: "Watch them all 📲", no: "Inbox full 📥", cat: "Daily Cuteness 💕", taunts: ["You must laugh at every single one!", "Algorithmic love language!", "Reel spam incoming!"] },
+  { text: "Will you answer my call on the first ring even if it's silly? 📞", yes: "Always picking up 📞", no: "Text first 💬", cat: "Daily Cuteness 💕", taunts: ["Hotline for cuteness!", "Ring ring!", "Priority caller!"] },
+  { text: "Would you still love me if I turned into a little worm? 🪱", yes: "I'd keep you in a jar 🪱", no: "Ew no worm 🐛", cat: "Silly Adventures 🚀", taunts: ["The ultimate test passed!", "Worm with a cute hat!", "Soil adventures!"] },
+  { text: "Will you be my favorite person today, tomorrow, and every day after? 💍", yes: "Forever & always 💍", no: "Today only ⏳", cat: "Forever & Always 💍", taunts: ["One lifetime isn't enough!", "Soulmate verified!", "Locked in for eternity!"] }
+];
 
-  const dotsEl = document.getElementById('dots');
-  const questionsEl = document.getElementById('questions');
-  const finalEl = document.getElementById('final');
-  const cardEl = document.getElementById('card');
+// Rich combinatorial building blocks for generating all 20,000 questions deterministically
+const questionStarters = [
+  "Are you completely okay with us", "Will you officially agree to", "Can I sign us up for a lifetime of",
+  "Do you solemnly swear to enjoy", "Is it legally binding that we keep", "Can we make a secret pact for",
+  "Will you promise to never stop", "Are you 100% down for forever", "Can I be your permanent partner in",
+  "Are you fine with making a daily habit of", "Would you forgive me if I insisted on", "Can we spend our future days",
+  "Is it true that you secretly love", "Will you let me surprise you with", "Are we both agreed that we should always",
+  "Can I officially steal your attention for", "Will you hold my hand through all our", "Are you ready to join me in",
+  "Can we make it a permanent rule that we", "Will you promise to give me a big smile when we", "Can we never ever get tired of",
+  "Is there any chance you'll say no to", "Will you let me be the one who gets to", "Can we always find an excuse for"
+];
 
-  function buildDots(){
-    dotsEl.innerHTML = '';
-    questions.forEach((_, i) => {
-      const d = document.createElement('div');
-      d.className = 'dot';
-      d.id = 'dot-' + i;
-      dotsEl.appendChild(d);
-    });
-    updateDots();
+const sweetActivities = [
+  "stealing each other's french fries at dinner", "ordering midnight ice cream in cozy mismatched pajamas",
+  "sharing warm blankets and having cozy movie marathons", "taking silly selfies in the grocery store aisles",
+  "building giant living room pillow forts when it rains", "sending each other 50 hilarious animal reels every day",
+  "holding hands even when our palms are awkwardly warm", "taking peaceful afternoon naps where time doesn't exist",
+  "singing goofy songs in the car with maximum passion", "planning dream vacations with at least 6 snack stops",
+  "sharing matching wallpapers like the cheesiest couple alive", "testing weird late-night food combinations together",
+  "giving each other sweet forehead kisses whenever we're stressed", "going on spontaneous long walks with nowhere to go",
+  "saving the best bite of food specifically for each other", "talking in funny secret voices when nobody is around",
+  "letting me warm my freezing cold toes on your feet", "complaining about being sleepy while staying up talking anyway",
+  "staring at each other until one of us bursts out laughing", "making random dance moves while waiting for food to cook",
+  "sharing a single pair of earphones to listen to music", "wearing each other's oversized hoodies forever",
+  "reminding each other how loved we are every single sunrise", "getting overly excited whenever we spot cute dogs outside",
+  "sharing the last slice of cheesy pizza without arguing", "holding each other tight for five extra minutes before leaving",
+  "taking cute polaroids to fill our future memory wall", "pretending we are Michelin star chefs while making Maggi"
+];
+
+const cuteTwists = [
+  "for the rest of eternity? ✨", "without any complaints or returns? 📜", "with zero refunds allowed in this universe? 💖",
+  "even when we're 80 years old with rocking chairs? 👵👴", "and making it our whole personality? 🌸",
+  "and sealing it with a pinky promise? 🤙", "forever and ever with strictly no takebacks? 💍",
+  "under the official penalty of infinite cuddles? 🧸", "and never letting anyone else know our secret? 🤫",
+  "every single day from morning to midnight? ☀️🌙", "and admitting that we are the cutest duo in history? 🏆",
+  "even if I act like a dramatic baby about it? 🥺", "no matter how goofy we look doing it? 🤪",
+  "and giving me a forehead kiss right after? 💋", "because Yash + Bhumi is the ultimate team? 🚀"
+];
+
+const categoryList = [
+  "Food & Treats 🍟", "Cuddles & Sleep ☁️", "Daily Cuteness 💕", "Silly Adventures 🚀", "Forever & Always 💍"
+];
+
+const yesLabels = [
+  "Yes, obviously! 💖", "Sign me up! 🥰", "100% agreed! ✨", "Always & forever! 💍", "Yes, please! 🥺",
+  "Count me in! 🎉", "Yes, with pleasure! 🌟", "Forever yes! 💕", "Obviously yes! 🌸", "Yes, my love! 💝"
+];
+
+const noLabels = [
+  "No way 🙅‍♀️", "In your dreams 🏃‍♀️", "Nope 🛑", "Never 🙈", "Ew no 😜", "Pass 🚫", "Not today 🥱", "Too silly 🤪"
+];
+
+const tauntBanks = [
+  ["The No button is dodging faster than ever!", "Nice try, but you're saying yes!", "Almost got it... or not!"],
+  ["The button is strictly out of service!", "Physics says you must press Yes!", "Look at that big pink button instead!"],
+  ["Error 404: 'No' not found in our universe!", "Dodged again! You can't escape my love!", "Come on, Bhumi, say yes!"],
+  ["The No button took one look and ran away!", "Even the button knows you love me!", "Give up and press the pink one!"]
+];
+
+// O(1) deterministic generator for any question from index 0 to 19,999
+function getQuestionData(index) {
+  const normIdx = ((index % TOTAL_QUESTIONS) + TOTAL_QUESTIONS) % TOTAL_QUESTIONS;
+  
+  if (normIdx < coreQuestions.length) {
+    const q = coreQuestions[normIdx];
+    return {
+      num: normIdx + 1,
+      text: q.text,
+      yes: q.yes,
+      no: q.no,
+      category: q.cat,
+      taunts: q.taunts
+    };
   }
 
-  function updateDots(){
-    questions.forEach((_, i) => {
-      const d = document.getElementById('dot-' + i);
-      if (!d) return;
-      d.classList.remove('active','done');
-      if (i < current) d.classList.add('done');
-      else if (i === current) d.classList.add('active');
-    });
-  }
+  // Combinatorial hashing for rich variety across 20,000 questions
+  const seed = normIdx - coreQuestions.length;
+  const starter = questionStarters[seed % questionStarters.length];
+  const act = sweetActivities[Math.floor(seed / questionStarters.length) % sweetActivities.length];
+  const twist = cuteTwists[Math.floor(seed / (questionStarters.length * sweetActivities.length)) % cuteTwists.length];
+  const cat = categoryList[seed % categoryList.length];
+  const yes = yesLabels[seed % yesLabels.length];
+  const no = noLabels[seed % noLabels.length];
+  const taunts = tauntBanks[seed % tauntBanks.length];
 
-  function buildQuestions(){
-    questionsEl.innerHTML = '';
-    questions.forEach((q, i) => {
-      const block = document.createElement('div');
-      block.className = 'q-block';
-      block.id = 'q-' + i;
-      block.innerHTML = `
-        <span class="eyebrow">Question ${i + 1} of ${questions.length}</span>
-        <div class="question">${q.text}</div>
-        <div class="btn-row" id="row-${i}">
-          <button class="yes-btn" data-idx="${i}">${q.yes || "Yes, obviously"}</button>
-          <button class="no-btn" data-idx="${i}">${q.no || "No"}</button>
-        </div>
-        <div class="taunt" id="taunt-${i}"></div>
-      `;
-      questionsEl.appendChild(block);
-    });
-    showCurrent();
-    attachHandlers();
-  }
-
-  function showCurrent(){
-    questions.forEach((_, i) => {
-      const el = document.getElementById('q-' + i);
-      if (el) el.classList.toggle('active', i === current);
-    });
-    updateDots();
-    requestAnimationFrame(() => layoutButtons(current));
-  }
-
-  function layoutButtons(idx){
-    const row = document.getElementById('row-' + idx);
-    if (!row) return;
-    const yes = row.querySelector('.yes-btn');
-    const no = row.querySelector('.no-btn');
-    if (!yes || !no) return;
-
-    const rowRect = row.getBoundingClientRect();
-    const gap = 16;
-    const yesW = yes.offsetWidth || 150;
-    const yesH = yes.offsetHeight || 48;
-    const noW = no.offsetWidth || 90;
-    const noH = no.offsetHeight || 48;
-    const totalW = yesW + noW + gap;
-    const startX = Math.max((rowRect.width - totalW) / 2, 8);
-    const centerY = Math.max((rowRect.height - yesH) / 2, 8);
-
-    yes.style.left = startX + 'px';
-    yes.style.top = centerY + 'px';
-    yes.style.transform = 'scale(1)';
-
-    no.style.left = (startX + yesW + gap) + 'px';
-    no.style.top = centerY + 'px';
-    no.style.transform = 'none';
-  }
-
-  window.addEventListener('resize', () => layoutButtons(current));
-
-  // Magnetic evasion physics for No button
-  function dodgeButton(btn, e){
-    const idx = btn.dataset.idx;
-    noAttempts++;
-    const q = questions[idx];
-    const taunt = document.getElementById('taunt-' + idx);
-    if (taunt && q.taunts && q.taunts.length > 0){
-      taunt.textContent = q.taunts[(noAttempts - 1) % q.taunts.length];
-      taunt.style.opacity = '1';
-    }
-
-    const row = document.getElementById('row-' + idx);
-    if (!row) return;
-    const yesBtn = row.querySelector('.yes-btn');
-    const rowRect = row.getBoundingClientRect();
-    const yesRect = yesBtn.getBoundingClientRect();
-
-    const noW = btn.offsetWidth;
-    const noH = btn.offsetHeight;
-    const margin = 14;
-
-    // yes button's relative box with buffer
-    const yesLeftRel = (yesRect.left - rowRect.left) - margin;
-    const yesTopRel = (yesRect.top - rowRect.top) - margin;
-    const yesW = yesRect.width + margin * 2;
-    const yesH = yesRect.height + margin * 2;
-
-    const maxLeft = Math.max(rowRect.width - noW - 8, 8);
-    const maxTop = Math.max(rowRect.height - noH - 8, 8);
-
-    // Mouse coordinates relative to row
-    let cursorX = rowRect.width / 2;
-    let cursorY = rowRect.height / 2;
-    if (e && typeof e.clientX === 'number'){
-      cursorX = e.clientX - rowRect.left;
-      cursorY = e.clientY - rowRect.top;
-    }
-
-    let newLeft = 0, newTop = 0, found = false;
-    let attempts = 0;
-
-    // Pick a coordinate far away from cursor and not overlapping Yes button
-    while (attempts < 45 && !found){
-      const testLeft = Math.random() * maxLeft;
-      const testTop = Math.random() * maxTop;
-      
-      const overlapsYes = (testLeft < yesLeftRel + yesW && testLeft + noW > yesLeftRel &&
-                           testTop < yesTopRel + yesH && testTop + noH > yesTopRel);
-      
-      const distFromCursor = Math.hypot((testLeft + noW/2) - cursorX, (testTop + noH/2) - cursorY);
-
-      if (!overlapsYes && distFromCursor > 110){
-        newLeft = testLeft;
-        newTop = testTop;
-        found = true;
-      }
-      attempts++;
-    }
-
-    if (!found){
-      // Jump to the opposite quadrant of cursor
-      newLeft = cursorX > rowRect.width / 2 ? 10 : maxLeft;
-      newTop = cursorY > rowRect.height / 2 ? 10 : maxTop;
-    }
-
-    const randomRot = (Math.random() * 24 - 12).toFixed(1);
-    btn.style.left = `${newLeft}px`;
-    btn.style.top = `${newTop}px`;
-    btn.style.transform = `rotate(${randomRot}deg) scale(0.96)`;
-    btn.classList.add('panicking');
-    setTimeout(() => btn.classList.remove('panicking'), 300);
-
-    // Yes button grows enticingly and glows
-    const scale = Math.min(1 + noAttempts * 0.08, 1.55);
-    yesBtn.style.transform = `scale(${scale})`;
-    yesBtn.style.boxShadow = `0 ${8 + noAttempts * 3}px ${24 + noAttempts * 6}px rgba(255,75,114,${Math.min(0.4 + noAttempts * 0.08, 0.9)})`;
-  }
-
-  function attachHandlers(){
-    // Yes button clicks
-    document.querySelectorAll('.yes-btn').forEach(btn => {
-      btn.addEventListener('click', () => {
-        current++;
-        noAttempts = 0;
-        if (current >= questions.length){
-          dotsEl.style.display = 'none';
-          questionsEl.style.display = 'none';
-          finalEl.classList.add('show');
-          launchHearts(45);
-        } else {
-          showCurrent();
-        }
-      });
-    });
-
-    // Proximity repelling & hover dodging on No button
-    document.querySelectorAll('.no-btn').forEach(btn => {
-      ['mouseenter', 'mouseover', 'pointerenter', 'pointerover'].forEach(evt => {
-        btn.addEventListener(evt, (e) => dodgeButton(btn, e));
-      });
-      btn.addEventListener('touchstart', (e) => {
-        e.preventDefault();
-        dodgeButton(btn, e.touches[0] || e);
-      }, {passive:false});
-      btn.addEventListener('click', (e) => {
-        e.preventDefault();
-        dodgeButton(btn, e);
-      });
-    });
-
-    // Proximity listener on entire card for smooth magnetic repulsion
-    cardEl.addEventListener('pointermove', (e) => {
-      const activeBlock = document.getElementById('q-' + current);
-      if (!activeBlock) return;
-      const noBtn = activeBlock.querySelector('.no-btn');
-      if (!noBtn) return;
-
-      const rect = noBtn.getBoundingClientRect();
-      const btnCenterX = rect.left + rect.width / 2;
-      const btnCenterY = rect.top + rect.height / 2;
-      const dist = Math.hypot(e.clientX - btnCenterX, e.clientY - btnCenterY);
-
-      // Repel if cursor gets within 65px radius!
-      if (dist < 65){
-        dodgeButton(noBtn, e);
-      }
-    });
-  }
-
-  function launchHearts(n){
-    const icons = ['💗','💕','✨','💖','🥰','🌸'];
-    for (let i = 0; i < n; i++){
-      setTimeout(() => {
-        const h = document.createElement('div');
-        h.className = 'heart';
-        h.textContent = icons[Math.floor(Math.random() * icons.length)];
-        h.style.left = Math.random() * 100 + 'vw';
-        h.style.fontSize = (16 + Math.random() * 22) + 'px';
-        h.style.animationDuration = (3.5 + Math.random() * 3.5) + 's';
-        document.body.appendChild(h);
-        setTimeout(() => h.remove(), 8000);
-      }, i * 90);
-    }
-  }
-
-  function ambientHearts(){
-    setInterval(() => {
-      const icons = ['💗','💕','✨','🌸'];
-      const h = document.createElement('div');
-      h.className = 'heart';
-      h.textContent = icons[Math.floor(Math.random() * icons.length)];
-      h.style.left = Math.random() * 100 + 'vw';
-      h.style.fontSize = (13 + Math.random() * 16) + 'px';
-      h.style.animationDuration = (5 + Math.random() * 5) + 's';
-      document.body.appendChild(h);
-      setTimeout(() => h.remove(), 11000);
-    }, 1200);
-  }
-
-  window.restartQuiz = function(){
-    current = 0;
-    noAttempts = 0;
-    dotsEl.style.display = 'flex';
-    questionsEl.style.display = 'block';
-    finalEl.classList.remove('show');
-    showCurrent();
+  return {
+    num: normIdx + 1,
+    text: `${starter} ${act} ${twist}`,
+    yes: yes,
+    no: no,
+    category: cat,
+    taunts: taunts
   };
+}
 
-  buildDots();
-  buildQuestions();
-  ambientHearts();
+/* =========================================================================
+   WEB AUDIO SOUND EFFECTS (Synthesized Web Audio API)
+   ========================================================================= */
+let audioCtx = null;
+let soundEnabled = true;
+
+function initAudio() {
+  if (!audioCtx) {
+    audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+  }
+}
+
+function playPopSound() {
+  if (!soundEnabled) return;
+  try {
+    initAudio();
+    const osc = audioCtx.createOscillator();
+    const gain = audioCtx.createGain();
+    osc.type = 'sine';
+    osc.frequency.setValueAtTime(440, audioCtx.currentTime);
+    osc.frequency.exponentialRampToValueAtTime(880, audioCtx.currentTime + 0.08);
+    gain.gain.setValueAtTime(0.3, audioCtx.currentTime);
+    gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.08);
+    osc.connect(gain);
+    gain.connect(audioCtx.destination);
+    osc.start();
+    osc.stop(audioCtx.currentTime + 0.08);
+  } catch (e) {}
+}
+
+function playDodgeBoing() {
+  if (!soundEnabled) return;
+  try {
+    initAudio();
+    const osc = audioCtx.createOscillator();
+    const gain = audioCtx.createGain();
+    osc.type = 'triangle';
+    osc.frequency.setValueAtTime(320, audioCtx.currentTime);
+    osc.frequency.exponentialRampToValueAtTime(160, audioCtx.currentTime + 0.12);
+    gain.gain.setValueAtTime(0.25, audioCtx.currentTime);
+    gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.12);
+    osc.connect(gain);
+    gain.connect(audioCtx.destination);
+    osc.start();
+    osc.stop(audioCtx.currentTime + 0.12);
+  } catch (e) {}
+}
+
+/* =========================================================================
+   STATE & PERSISTENCE
+   ========================================================================= */
+const STORAGE_KEY = 'bhumi_love_quiz_20k_v1';
+
+let state = {
+  currentIndex: 0,
+  yesCount: 0,
+  dodgeCount: 0,
+  streak: 0,
+  unlockedBadges: []
+};
+
+function loadState() {
+  const saved = localStorage.getItem(STORAGE_KEY);
+  if (saved) {
+    try {
+      state = JSON.parse(saved);
+    } catch (e) {
+      initFreshState();
+    }
+  } else {
+    initFreshState();
+  }
+}
+
+function initFreshState() {
+  state.currentIndex = 0;
+  state.yesCount = 0;
+  state.dodgeCount = 0;
+  state.streak = 0;
+  state.unlockedBadges = [];
+  saveState();
+}
+
+function saveState() {
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+}
+
+/* =========================================================================
+   UI RENDERING & CONTROLS
+   ========================================================================= */
+const questionTextEl = document.getElementById('questionText');
+const categoryBadgeEl = document.getElementById('categoryBadge');
+const yesBtn = document.getElementById('yesBtn');
+const noBtn = document.getElementById('noBtn');
+const tauntBox = document.getElementById('tauntBox');
+const btnRow = document.getElementById('btnRow');
+const progressBar = document.getElementById('progressBar');
+const progressText = document.getElementById('progressText');
+const streakDisplay = document.getElementById('streakDisplay');
+const answeredCountEl = document.getElementById('answeredCount');
+const dodgedCountEl = document.getElementById('dodgedCount');
+const mainCard = document.getElementById('mainCard');
+const prevBtn = document.getElementById('prevBtn');
+const nextBtn = document.getElementById('nextBtn');
+const badgePopup = document.getElementById('badgePopup');
+const badgeText = document.getElementById('badgeText');
+const badgeIcon = document.getElementById('badgeIcon');
+const soundToggle = document.getElementById('soundToggle');
+const jumpModal = document.getElementById('jumpModal');
+const jumpInput = document.getElementById('jumpInput');
+const settingsModal = document.getElementById('settingsModal');
+
+let currentNoAttempts = 0;
+
+function updateStatsUI() {
+  answeredCountEl.textContent = state.yesCount.toLocaleString();
+  dodgedCountEl.textContent = state.dodgeCount.toLocaleString();
+  streakDisplay.textContent = `🌟 Love Streak: ${state.streak}`;
+  
+  const currentDisplay = (state.currentIndex + 1).toLocaleString();
+  progressText.textContent = `Question ${currentDisplay} of ${TOTAL_QUESTIONS.toLocaleString()} ↗`;
+  
+  const pct = Math.min(((state.currentIndex + 1) / TOTAL_QUESTIONS) * 100, 100);
+  progressBar.style.width = `${pct}%`;
+
+  prevBtn.disabled = state.currentIndex <= 0;
+  nextBtn.disabled = state.currentIndex >= TOTAL_QUESTIONS - 1;
+}
+
+function renderCurrentQuestion() {
+  const q = getQuestionData(state.currentIndex);
+
+  categoryBadgeEl.textContent = q.category;
+  questionTextEl.textContent = q.text;
+  yesBtn.textContent = q.yes;
+  noBtn.textContent = q.no;
+  tauntBox.textContent = '';
+  currentNoAttempts = 0;
+
+  updateStatsUI();
+  layoutButtons();
+}
+
+function layoutButtons() {
+  const rowRect = btnRow.getBoundingClientRect();
+  const gap = 16;
+  const yesW = yesBtn.offsetWidth || 150;
+  const yesH = yesBtn.offsetHeight || 48;
+  const noW = noBtn.offsetWidth || 90;
+  const noH = noBtn.offsetHeight || 48;
+  const totalW = yesW + noW + gap;
+  const startX = Math.max((rowRect.width - totalW) / 2, 8);
+  const centerY = Math.max((rowRect.height - yesH) / 2, 8);
+
+  yesBtn.style.left = `${startX}px`;
+  yesBtn.style.top = `${centerY}px`;
+  yesBtn.style.transform = 'scale(1)';
+  yesBtn.style.boxShadow = '0 8px 24px rgba(255, 51, 102, 0.4)';
+
+  noBtn.style.left = `${startX + yesW + gap}px`;
+  noBtn.style.top = `${centerY}px`;
+  noBtn.style.transform = 'none';
+}
+
+window.addEventListener('resize', layoutButtons);
+
+/* =========================================================================
+   NAVIGATION FUNCTIONS (Prev, Next, Jump, Random)
+   ========================================================================= */
+function prevQuestion() {
+  if (state.currentIndex > 0) {
+    state.currentIndex--;
+    saveState();
+    renderCurrentQuestion();
+  }
+}
+
+function nextQuestion() {
+  if (state.currentIndex < TOTAL_QUESTIONS - 1) {
+    state.currentIndex++;
+    saveState();
+    renderCurrentQuestion();
+  }
+}
+
+function randomQuestion() {
+  state.currentIndex = Math.floor(Math.random() * TOTAL_QUESTIONS);
+  saveState();
+  renderCurrentQuestion();
+}
+
+function openJumpModal() {
+  jumpInput.value = state.currentIndex + 1;
+  jumpModal.classList.add('open');
+  setTimeout(() => jumpInput.focus(), 100);
+}
+
+function closeJumpModal() {
+  jumpModal.classList.remove('open');
+}
+
+function submitJump() {
+  const val = parseInt(jumpInput.value, 10);
+  if (!isNaN(val) && val >= 1 && val <= TOTAL_QUESTIONS) {
+    state.currentIndex = val - 1;
+    saveState();
+    closeJumpModal();
+    renderCurrentQuestion();
+  } else {
+    alert(`Please enter a number between 1 and ${TOTAL_QUESTIONS.toLocaleString()}!`);
+  }
+}
+
+jumpInput.addEventListener('keydown', (e) => {
+  if (e.key === 'Enter') submitJump();
+  if (e.key === 'Escape') closeJumpModal();
+});
+
+// Global Keyboard Navigation
+window.addEventListener('keydown', (e) => {
+  if (jumpModal.classList.contains('open') || settingsModal.classList.contains('open')) return;
+  if (e.key === 'ArrowLeft') prevQuestion();
+  if (e.key === 'ArrowRight') nextQuestion();
+  if (e.key.toLowerCase() === 'j') openJumpModal();
+});
+
+/* =========================================================================
+   MAGNETIC NO-BUTTON REPELLING & EVASION PHYSICS
+   ========================================================================= */
+function dodgeNoButton(e) {
+  state.dodgeCount++;
+  currentNoAttempts++;
+  saveState();
+  updateStatsUI();
+  playDodgeBoing();
+  checkAchievements();
+
+  const q = getQuestionData(state.currentIndex);
+  if (q.taunts && q.taunts.length > 0) {
+    tauntBox.textContent = q.taunts[(currentNoAttempts - 1) % q.taunts.length];
+  }
+
+  const rowRect = btnRow.getBoundingClientRect();
+  const yesRect = yesBtn.getBoundingClientRect();
+  const noW = noBtn.offsetWidth;
+  const noH = noBtn.offsetHeight;
+  const margin = 14;
+
+  const yesLeftRel = (yesRect.left - rowRect.left) - margin;
+  const yesTopRel = (yesRect.top - rowRect.top) - margin;
+  const yesW = yesRect.width + margin * 2;
+  const yesH = yesRect.height + margin * 2;
+
+  const maxLeft = Math.max(rowRect.width - noW - 8, 8);
+  const maxTop = Math.max(rowRect.height - noH - 8, 8);
+
+  let cursorX = rowRect.width / 2;
+  let cursorY = rowRect.height / 2;
+  if (e && typeof e.clientX === 'number') {
+    cursorX = e.clientX - rowRect.left;
+    cursorY = e.clientY - rowRect.top;
+  }
+
+  let newLeft = 0, newTop = 0, found = false;
+  let attempts = 0;
+
+  while (attempts < 50 && !found) {
+    const testLeft = Math.random() * maxLeft;
+    const testTop = Math.random() * maxTop;
+
+    const overlapsYes = (testLeft < yesLeftRel + yesW && testLeft + noW > yesLeftRel &&
+                         testTop < yesTopRel + yesH && testTop + noH > yesTopRel);
+
+    const distFromCursor = Math.hypot((testLeft + noW / 2) - cursorX, (testTop + noH / 2) - cursorY);
+
+    if (!overlapsYes && distFromCursor > 115) {
+      newLeft = testLeft;
+      newTop = testTop;
+      found = true;
+    }
+    attempts++;
+  }
+
+  if (!found) {
+    newLeft = cursorX > rowRect.width / 2 ? 8 : maxLeft;
+    newTop = cursorY > rowRect.height / 2 ? 8 : maxTop;
+  }
+
+  const randomRot = (Math.random() * 26 - 13).toFixed(1);
+  noBtn.style.left = `${newLeft}px`;
+  noBtn.style.top = `${newTop}px`;
+  noBtn.style.transform = `rotate(${randomRot}deg) scale(0.95)`;
+  noBtn.classList.add('panicking');
+  setTimeout(() => noBtn.classList.remove('panicking'), 300);
+
+  // Yes button grows bigger and glows brighter
+  const scale = Math.min(1 + currentNoAttempts * 0.08, 1.55);
+  yesBtn.style.transform = `scale(${scale})`;
+  yesBtn.style.boxShadow = `0 ${8 + currentNoAttempts * 3}px ${24 + currentNoAttempts * 6}px rgba(255, 51, 102, ${Math.min(0.4 + currentNoAttempts * 0.08, 0.95)})`;
+}
+
+// Attach hover and proximity repelling
+['mouseenter', 'mouseover', 'pointerenter', 'pointerover'].forEach(evt => {
+  noBtn.addEventListener(evt, (e) => dodgeNoButton(e));
+});
+noBtn.addEventListener('touchstart', (e) => {
+  e.preventDefault();
+  dodgeNoButton(e.touches[0] || e);
+}, { passive: false });
+noBtn.addEventListener('click', (e) => {
+  e.preventDefault();
+  dodgeNoButton(e);
+});
+
+// Magnetic field around No button (repels cursor when < 68px away)
+mainCard.addEventListener('pointermove', (e) => {
+  const rect = noBtn.getBoundingClientRect();
+  const btnCenterX = rect.left + rect.width / 2;
+  const btnCenterY = rect.top + rect.height / 2;
+  const dist = Math.hypot(e.clientX - btnCenterX, e.clientY - btnCenterY);
+
+  if (dist < 68) {
+    dodgeNoButton(e);
+  }
+});
+
+/* =========================================================================
+   YES BUTTON CLICK & PROGRESSION
+   ========================================================================= */
+yesBtn.addEventListener('click', () => {
+  playPopSound();
+  state.yesCount++;
+  state.streak++;
+  launchSparkles(yesBtn);
+  checkAchievements();
+
+  if (state.currentIndex < TOTAL_QUESTIONS - 1) {
+    state.currentIndex++;
+  }
+  saveState();
+  renderCurrentQuestion();
+});
+
+/* =========================================================================
+   ACHIEVEMENTS SYSTEM
+   ========================================================================= */
+const BADGES = [
+  { id: 'first_yes', icon: '💖', text: 'First Sweet Yes!', check: () => state.yesCount >= 1 },
+  { id: 'dodge_10', icon: '🏃‍♂️', text: 'Dodged No 10 Times!', check: () => state.dodgeCount >= 10 },
+  { id: 'streak_10', icon: '🔥', text: '10 Questions Streak!', check: () => state.streak >= 10 },
+  { id: 'century_100', icon: '💯', text: '100 Questions Soulmate!', check: () => state.yesCount >= 100 },
+  { id: 'milestone_1000', icon: '🌟', text: '1,000 Questions Champion!', check: () => state.yesCount >= 1000 },
+  { id: 'dodge_500', icon: '⚡', text: '500 Evasions Master!', check: () => state.dodgeCount >= 500 }
+];
+
+function checkAchievements() {
+  BADGES.forEach(b => {
+    if (!state.unlockedBadges.includes(b.id) && b.check()) {
+      state.unlockedBadges.push(b.id);
+      saveState();
+      showBadgeToast(b.icon, b.text);
+    }
+  });
+}
+
+function showBadgeToast(icon, text) {
+  badgeIcon.textContent = icon;
+  badgeText.textContent = text;
+  badgePopup.classList.add('show');
+  setTimeout(() => badgePopup.classList.remove('show'), 3200);
+}
+
+/* =========================================================================
+   PARTICLES & EFFECTS
+   ========================================================================= */
+function launchSparkles(el) {
+  const rect = el.getBoundingClientRect();
+  for (let i = 0; i < 8; i++) {
+    const s = document.createElement('div');
+    s.textContent = '✨';
+    s.style.position = 'fixed';
+    s.style.left = `${rect.left + rect.width / 2 + (Math.random() * 60 - 30)}px`;
+    s.style.top = `${rect.top + (Math.random() * 20 - 10)}px`;
+    s.style.fontSize = '18px';
+    s.style.pointerEvents = 'none';
+    s.style.transition = 'all 0.6s ease-out';
+    s.style.zIndex = '99';
+    document.body.appendChild(s);
+
+    requestAnimationFrame(() => {
+      s.style.transform = `translate(${Math.random() * 80 - 40}px, ${Math.random() * -60 - 20}px) scale(1.4)`;
+      s.style.opacity = '0';
+    });
+    setTimeout(() => s.remove(), 700);
+  }
+}
+
+function ambientHearts() {
+  setInterval(() => {
+    const icons = ['💗', '💕', '✨', '🌸'];
+    const h = document.createElement('div');
+    h.className = 'heart-particle';
+    h.textContent = icons[Math.floor(Math.random() * icons.length)];
+    h.style.left = `${Math.random() * 100}vw`;
+    h.style.fontSize = `${12 + Math.random() * 16}px`;
+    h.style.animationDuration = `${5 + Math.random() * 5}s`;
+    document.body.appendChild(h);
+    setTimeout(() => h.remove(), 11000);
+  }, 1400);
+}
+
+/* =========================================================================
+   SETTINGS & CONTROLS
+   ========================================================================= */
+soundToggle.addEventListener('click', () => {
+  soundEnabled = !soundEnabled;
+  soundToggle.textContent = soundEnabled ? '🔊' : '🔇';
+});
+
+document.getElementById('jumpModalBtn').addEventListener('click', openJumpModal);
+
+document.getElementById('settingsBtn').addEventListener('click', () => {
+  settingsModal.classList.add('open');
+});
+
+function closeSettingsModal() {
+  settingsModal.classList.remove('open');
+}
+
+function resetAllData() {
+  if (confirm("Reset all progress, question index, and statistics?")) {
+    localStorage.removeItem(STORAGE_KEY);
+    initFreshState();
+    closeSettingsModal();
+    renderCurrentQuestion();
+  }
+}
+
+// Initial Boot
+loadState();
+renderCurrentQuestion();
+ambientHearts();
 </script>
 
 </body>
-</html>
+</html>
