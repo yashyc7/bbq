@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Questions for Bhumi 💖</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg-deep:#180d28;
+    --bg-deep-2:#2b1842;
+    --pink:#FF7597;
+    --pink-glow:#ff4d79;
+    --pink-soft:#FFB5CC;
+    --gold:#FFD166;
+    --lavender:#C3B1E1;
+    --cream:#FFF5EB;
+    --muted:#AFA0C5;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    min-height:100vh;
+    background:radial-gradient(circle at 50% 20%, var(--bg-deep-2), var(--bg-deep) 75%);
+    font-family:'Nunito',sans-serif;
+    color:var(--cream);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    overflow-x:hidden;
+    position:relative;
+  }
+
+  /* floating background particles */
+  .heart{
+    position:fixed;
+    top:110vh;
+    font-size:20px;
+    opacity:0.55;
+    pointer-events:none;
+    animation:floatUp linear infinite;
+    color:var(--pink-soft);
+    user-select:none;
+    z-index:1;
+  }
+  @keyframes floatUp{
+    0%{ transform:translateY(0) rotate(0deg) scale(0.8); opacity:0;}
+    12%{ opacity:0.65; }
+    85%{ opacity:0.5; }
+    100%{ transform:translateY(-125vh) rotate(35deg) scale(1.15); opacity:0;}
+  }
+
+  .stage{
+    position:relative;
+    width:100%;
+    max-width:540px;
+    padding:24px 20px;
+    z-index:2;
+  }
+
+  .card{
+    background:rgba(255,255,255,0.045);
+    border:1px solid rgba(255,255,255,0.12);
+    backdrop-filter:blur(16px);
+    -webkit-backdrop-filter:blur(16px);
+    border-radius:32px;
+    padding:40px 32px 34px;
+    text-align:center;
+    box-shadow:0 24px 60px rgba(0,0,0,0.45), 0 0 40px rgba(255,117,151,0.08);
+    position:relative;
+    overflow:hidden;
+    transition:box-shadow 0.3s ease;
+  }
+
+  .dots{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    align-items:center;
+    gap:6px;
+    margin-bottom:24px;
+    max-width:420px;
+    margin-left:auto;
+    margin-right:auto;
+  }
+  .dot{
+    width:7px;
+    height:7px;
+    border-radius:50%;
+    background:rgba(255,255,255,0.18);
+    transition:all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+  .dot.active{
+    background:var(--gold);
+    width:22px;
+    border-radius:10px;
+    box-shadow:0 0 10px rgba(255,209,102,0.6);
+  }
+  .dot.done{
+    background:var(--pink);
+    box-shadow:0 0 6px rgba(255,117,151,0.4);
+  }
+
+  .eyebrow{
+    font-family:'Fredoka',sans-serif;
+    font-size:12px;
+    font-weight:600;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--lavender);
+    margin:0 0 10px;
+    display:inline-block;
+    padding:4px 14px;
+    background:rgba(255,255,255,0.06);
+    border-radius:20px;
+    border:1px solid rgba(255,255,255,0.08);
+  }
+
+  .question{
+    font-family:'Fredoka',sans-serif;
+    font-weight:500;
+    font-size:24px;
+    line-height:1.4;
+    margin:10px 0 26px;
+    color:var(--cream);
+    min-height:68px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+
+  .btn-row{
+    position:relative;
+    height:160px;
+    width:100%;
+    margin-top:6px;
+  }
+
+  button{
+    font-family:'Fredoka',sans-serif;
+    font-weight:600;
+    font-size:16px;
+    border-radius:999px;
+    padding:14px 28px;
+    border:none;
+    cursor:pointer;
+    position:absolute;
+    user-select:none;
+    -webkit-user-select:none;
+    touch-action:manipulation;
+    white-space:nowrap;
+  }
+
+  .yes-btn{
+    background:linear-gradient(135deg, #FF85A2, #FF4B72);
+    color:#2A0413;
+    box-shadow:0 8px 24px rgba(255,75,114,0.4);
+    transition:transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.2s ease, left 0.2s ease, top 0.2s ease;
+    z-index:5;
+  }
+  .yes-btn:hover{
+    box-shadow:0 12px 30px rgba(255,75,114,0.6);
+  }
+  .yes-btn:active{
+    transform:scale(0.96) !important;
+  }
+
+  .no-btn{
+    background:rgba(255,255,255,0.09);
+    border:1px solid rgba(255,255,255,0.18);
+    color:var(--cream);
+    box-shadow:0 4px 14px rgba(0,0,0,0.25);
+    transition:left 0.18s cubic-bezier(0.2, 0.9, 0.3, 1), top 0.18s cubic-bezier(0.2, 0.9, 0.3, 1), transform 0.15s ease, background 0.2s ease;
+    z-index:10;
+  }
+  .no-btn.panicking{
+    animation:shake 0.3s ease-in-out;
+  }
+  @keyframes shake{
+    0%,100%{transform:rotate(0deg);}
+    25%{transform:rotate(-8deg) scale(1.05);}
+    75%{transform:rotate(8deg) scale(1.05);}
+  }
+
+  .taunt{
+    font-size:13.5px;
+    color:var(--gold);
+    min-height:22px;
+    margin-top:14px;
+    font-style:italic;
+    letter-spacing:0.02em;
+    transition:opacity 0.2s ease;
+  }
+
+  /* Final screen */
+  .final{
+    display:none;
+    animation:fadeIn 0.5s ease-out;
+  }
+  .final.show{
+    display:block;
+  }
+  @keyframes fadeIn{
+    from{opacity:0; transform:translateY(12px);}
+    to{opacity:1; transform:translateY(0);}
+  }
+
+  .final .title{
+    font-family:'Fredoka',sans-serif;
+    font-size:32px;
+    font-weight:700;
+    margin-bottom:16px;
+    color:var(--gold);
+    text-shadow:0 4px 18px rgba(255,209,102,0.3);
+  }
+  .final p{
+    font-size:16.5px;
+    line-height:1.65;
+    color:var(--cream);
+    margin-bottom:8px;
+  }
+  .final .heart-icon{
+    font-size:58px;
+    margin-bottom:12px;
+    display:inline-block;
+    animation:pulse 1.1s ease-in-out infinite;
+  }
+  @keyframes pulse{
+    0%,100%{transform:scale(1);}
+    50%{transform:scale(1.16);}
+  }
+
+  .signature{
+    margin-top:28px;
+    font-size:13.5px;
+    color:var(--muted);
+    letter-spacing:0.04em;
+  }
+
+  .restart-btn{
+    margin-top:20px;
+    position:static;
+    display:inline-block;
+    background:rgba(255,255,255,0.08);
+    border:1px solid rgba(255,255,255,0.2);
+    color:var(--cream);
+    padding:10px 24px;
+    font-size:14px;
+    border-radius:20px;
+    transition:all 0.2s ease;
+  }
+  .restart-btn:hover{
+    background:rgba(255,255,255,0.16);
+    transform:scale(1.04);
+  }
+
+  .q-block{
+    display:none;
+  }
+  .q-block.active{
+    display:block;
+    animation:fadeIn 0.3s ease-out;
+  }
+
+  @media (max-width:480px){
+    .card{padding:30px 18px 24px; border-radius:24px;}
+    .question{font-size:20px; min-height:60px;}
+    button{padding:12px 22px; font-size:14.5px;}
+    .btn-row{height:175px;}
+  }
+</style>
+</head>
+<body>
+
+<div class="stage">
+  <div class="card" id="card">
+
+    <div class="dots" id="dots"></div>
+
+    <div id="questions"></div>
+
+    <div class="final" id="final">
+      <div class="heart-icon">💖</div>
+      <div class="title">She said YES. Every single time! 🥰</div>
+      <p>You just officially agreed to all of it, Bhumi — the fries, the 47 daily texts, the playlists, and me.</p>
+      <p>It's in the contract now. No takebacks, no returns, and strictly no refunds! 🍟✨</p>
+      <div class="signature">Made with endless love by Yash ❤️</div>
+      <button class="restart-btn" onclick="restartQuiz()">Replay from start 🔁</button>
+    </div>
+
+  </div>
+</div>
+
+<script>
+  const questionPool = [
+    {
+      text: "Are you okay with me stealing fries off your plate, forever, no negotiation? 🍟",
+      yes: "Yes, obviously 🍟",
+      no: "Hands off 🛑",
+      taunts: ["Wait, think about the fries...", "You know you're saying yes to fries either way!", "The fries miss you already!"]
+    },
+    {
+      text: "Can I keep sending you an unreasonable number of good morning texts? 📱",
+      yes: "Please do 💕",
+      no: "Too many 📴",
+      taunts: ["The No button is shy today 🙈", "It dodges faster than your unread notifications!", "Your phone is buzzing in anticipation!"]
+    },
+    {
+      text: "Will you forgive my jokes even when they are, objectively, not funny? 🤡",
+      yes: "I'll pity laugh 😂",
+      no: "Never 🙅‍♀️",
+      taunts: ["The button refuses to be clicked 😆", "Even the button thinks my joke was decent!", "Come on, pity laughs count!"]
+    },
+    {
+      text: "Are you fine with me talking about EverTwo for way longer than anyone asked? 💻",
+      yes: "I'm all ears 🚀",
+      no: "Too nerdy 🥱",
+      taunts: ["The button ran out of excuses 🏃‍♂️", "It's hiding behind the code!", "Just nod and say yes!"]
+    },
+    {
+      text: "Will you pretend my singing is a feature and not a bug? 🎤",
+      yes: "Grammy worthy 🌟",
+      no: "My ears hurt 🙉",
+      taunts: ["The button is covering its ears too 🙉", "Give it a moment, it's recovering!", "You know you love my concerts!"]
+    },
+    {
+      text: "Can I explain something you didn't ask about for at least 10 whole minutes? 🤓",
+      yes: "Teach me 📖",
+      no: "I didn't ask ✋",
+      taunts: ["It's already regretting dodging 🏃‍♀️", "The button ran out of patience!", "You know you secretly like the trivia!"]
+    },
+    {
+      text: "Are you okay with 15 unsolicited photos of the sky in one single day? ☁️",
+      yes: "Send more clouds 🌤️",
+      no: "Storage full 📷",
+      taunts: ["It's hiding behind a cloud ☁️", "The button needs extra iCloud storage!", "Almost got it!"]
+    },
+    {
+      text: "Will you still hype me up when my code refuses to compile at 2 AM? 🐛",
+      yes: "You're a genius 🧠",
+      no: "Skill issue ❌",
+      taunts: ["The button also doesn't know what went wrong 💥", "It's debugging its own escape route!", "Syntax Error: 'No' not permitted!"]
+    },
+    {
+      text: "Can we make questionable midnight food combinations our whole personality? 🍕",
+      yes: "Order right now 🤤",
+      no: "Ew gross 🤢",
+      taunts: ["The button is judging the midnight menu 🍕", "It does not approve of pineapple either!", "One bite and you'll say yes!"]
+    },
+    {
+      text: "Are you fine with a 6-tab color-coded spreadsheet for planning our next trip? ✈️",
+      yes: "Color code it! 🗺️",
+      no: "Too intense 😴",
+      taunts: ["It's overwhelmed by the itinerary tabs 📊", "The button needs its own boarding pass!", "Pack your bags, say yes!"]
+    },
+    {
+      text: "Will you let me check 'did you eat?' every single day, annoyingly? 🍲",
+      yes: "Always ask 🥺",
+      no: "I'm not hungry 😠",
+      taunts: ["The button thinks that's kind of sweet, actually 🥺", "It's running out of reasons to dodge!", "Almost there, it's caving in!"]
+    },
+    {
+      text: "Can I keep being the excessively proud, loud one cheering for you in public? 📣",
+      yes: "Hype me up! 🥳",
+      no: "Embarrassing 🫣",
+      taunts: ["The button is getting embarrassed on your behalf 🙈", "It's still dodging, but barely!", "One more try, it's exhausted!"]
+    },
+    {
+      text: "Are you ready to share your hoodies, blankets, and snacks for eternity? 🧥",
+      yes: "They're yours 🥰",
+      no: "Get your own 🔒",
+      taunts: ["Hey, that oversized hoodie looks better on me anyway!", "The button stole the blanket and ran! 🏃", "Warmth is meant to be shared!"]
+    },
+    {
+      text: "Will you hold my hand even when it's awkwardly freezing cold? ❄️",
+      yes: "Warm it up 🤝",
+      no: "Don't touch me 🧊",
+      taunts: ["Ice hands need love too! 🥶", "The button slipped right out of your grasp!", "Hand warmers incoming!"]
+    },
+    {
+      text: "Are you secretly 100% obsessed with me? (Be completely honest) 😏",
+      yes: "Guilty as charged 💖",
+      no: "Not at all 🤥",
+      taunts: ["Lie detector test failed! 🚨", "Even the button knows you're bluffing!", "Caught in 4K! Say yes!"]
+    },
+    {
+      text: "Are you ever allowed to get tired of me? 🤔",
+      yes: "Never in a million years ♾️",
+      no: "Maybe tomorrow 🏃",
+      taunts: ["Nice try! Lifetime contract active 📜", "Dodged it! No escape route!", "You're stuck with me forever!"]
+    },
+    {
+      text: "Do you think anyone in the universe could ever love you more than I do? 🌌",
+      yes: "Literally impossible 🪐",
+      no: "Maybe someone 🛸",
+      taunts: ["Scientific fact: Impossible! 🔭", "The math does not compute! 📐", "Say yes to the galaxy!"]
+    },
+    {
+      text: "Will you be my favorite person, today, tomorrow, and every single day after? 💍",
+      yes: "Forever & always 💘",
+      no: "Nope 🏃‍♀️",
+      taunts: ["This one only has ONE correct answer 💝", "The button officially surrendered!", "Go on, press the big pink button!"]
+    }
+  ];
+
+  let questions = [...questionPool];
+  let current = 0;
+  let noAttempts = 0;
+
+  const dotsEl = document.getElementById('dots');
+  const questionsEl = document.getElementById('questions');
+  const finalEl = document.getElementById('final');
+  const cardEl = document.getElementById('card');
+
+  function buildDots(){
+    dotsEl.innerHTML = '';
+    questions.forEach((_, i) => {
+      const d = document.createElement('div');
+      d.className = 'dot';
+      d.id = 'dot-' + i;
+      dotsEl.appendChild(d);
+    });
+    updateDots();
+  }
+
+  function updateDots(){
+    questions.forEach((_, i) => {
+      const d = document.getElementById('dot-' + i);
+      if (!d) return;
+      d.classList.remove('active','done');
+      if (i < current) d.classList.add('done');
+      else if (i === current) d.classList.add('active');
+    });
+  }
+
+  function buildQuestions(){
+    questionsEl.innerHTML = '';
+    questions.forEach((q, i) => {
+      const block = document.createElement('div');
+      block.className = 'q-block';
+      block.id = 'q-' + i;
+      block.innerHTML = `
+        <span class="eyebrow">Question ${i + 1} of ${questions.length}</span>
+        <div class="question">${q.text}</div>
+        <div class="btn-row" id="row-${i}">
+          <button class="yes-btn" data-idx="${i}">${q.yes || "Yes, obviously"}</button>
+          <button class="no-btn" data-idx="${i}">${q.no || "No"}</button>
+        </div>
+        <div class="taunt" id="taunt-${i}"></div>
+      `;
+      questionsEl.appendChild(block);
+    });
+    showCurrent();
+    attachHandlers();
+  }
+
+  function showCurrent(){
+    questions.forEach((_, i) => {
+      const el = document.getElementById('q-' + i);
+      if (el) el.classList.toggle('active', i === current);
+    });
+    updateDots();
+    requestAnimationFrame(() => layoutButtons(current));
+  }
+
+  function layoutButtons(idx){
+    const row = document.getElementById('row-' + idx);
+    if (!row) return;
+    const yes = row.querySelector('.yes-btn');
+    const no = row.querySelector('.no-btn');
+    if (!yes || !no) return;
+
+    const rowRect = row.getBoundingClientRect();
+    const gap = 16;
+    const yesW = yes.offsetWidth || 150;
+    const yesH = yes.offsetHeight || 48;
+    const noW = no.offsetWidth || 90;
+    const noH = no.offsetHeight || 48;
+    const totalW = yesW + noW + gap;
+    const startX = Math.max((rowRect.width - totalW) / 2, 8);
+    const centerY = Math.max((rowRect.height - yesH) / 2, 8);
+
+    yes.style.left = startX + 'px';
+    yes.style.top = centerY + 'px';
+    yes.style.transform = 'scale(1)';
+
+    no.style.left = (startX + yesW + gap) + 'px';
+    no.style.top = centerY + 'px';
+    no.style.transform = 'none';
+  }
+
+  window.addEventListener('resize', () => layoutButtons(current));
+
+  // Magnetic evasion physics for No button
+  function dodgeButton(btn, e){
+    const idx = btn.dataset.idx;
+    noAttempts++;
+    const q = questions[idx];
+    const taunt = document.getElementById('taunt-' + idx);
+    if (taunt && q.taunts && q.taunts.length > 0){
+      taunt.textContent = q.taunts[(noAttempts - 1) % q.taunts.length];
+      taunt.style.opacity = '1';
+    }
+
+    const row = document.getElementById('row-' + idx);
+    if (!row) return;
+    const yesBtn = row.querySelector('.yes-btn');
+    const rowRect = row.getBoundingClientRect();
+    const yesRect = yesBtn.getBoundingClientRect();
+
+    const noW = btn.offsetWidth;
+    const noH = btn.offsetHeight;
+    const margin = 14;
+
+    // yes button's relative box with buffer
+    const yesLeftRel = (yesRect.left - rowRect.left) - margin;
+    const yesTopRel = (yesRect.top - rowRect.top) - margin;
+    const yesW = yesRect.width + margin * 2;
+    const yesH = yesRect.height + margin * 2;
+
+    const maxLeft = Math.max(rowRect.width - noW - 8, 8);
+    const maxTop = Math.max(rowRect.height - noH - 8, 8);
+
+    // Mouse coordinates relative to row
+    let cursorX = rowRect.width / 2;
+    let cursorY = rowRect.height / 2;
+    if (e && typeof e.clientX === 'number'){
+      cursorX = e.clientX - rowRect.left;
+      cursorY = e.clientY - rowRect.top;
+    }
+
+    let newLeft = 0, newTop = 0, found = false;
+    let attempts = 0;
+
+    // Pick a coordinate far away from cursor and not overlapping Yes button
+    while (attempts < 45 && !found){
+      const testLeft = Math.random() * maxLeft;
+      const testTop = Math.random() * maxTop;
+      
+      const overlapsYes = (testLeft < yesLeftRel + yesW && testLeft + noW > yesLeftRel &&
+                           testTop < yesTopRel + yesH && testTop + noH > yesTopRel);
+      
+      const distFromCursor = Math.hypot((testLeft + noW/2) - cursorX, (testTop + noH/2) - cursorY);
+
+      if (!overlapsYes && distFromCursor > 110){
+        newLeft = testLeft;
+        newTop = testTop;
+        found = true;
+      }
+      attempts++;
+    }
+
+    if (!found){
+      // Jump to the opposite quadrant of cursor
+      newLeft = cursorX > rowRect.width / 2 ? 10 : maxLeft;
+      newTop = cursorY > rowRect.height / 2 ? 10 : maxTop;
+    }
+
+    const randomRot = (Math.random() * 24 - 12).toFixed(1);
+    btn.style.left = `${newLeft}px`;
+    btn.style.top = `${newTop}px`;
+    btn.style.transform = `rotate(${randomRot}deg) scale(0.96)`;
+    btn.classList.add('panicking');
+    setTimeout(() => btn.classList.remove('panicking'), 300);
+
+    // Yes button grows enticingly and glows
+    const scale = Math.min(1 + noAttempts * 0.08, 1.55);
+    yesBtn.style.transform = `scale(${scale})`;
+    yesBtn.style.boxShadow = `0 ${8 + noAttempts * 3}px ${24 + noAttempts * 6}px rgba(255,75,114,${Math.min(0.4 + noAttempts * 0.08, 0.9)})`;
+  }
+
+  function attachHandlers(){
+    // Yes button clicks
+    document.querySelectorAll('.yes-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        current++;
+        noAttempts = 0;
+        if (current >= questions.length){
+          dotsEl.style.display = 'none';
+          questionsEl.style.display = 'none';
+          finalEl.classList.add('show');
+          launchHearts(45);
+        } else {
+          showCurrent();
+        }
+      });
+    });
+
+    // Proximity repelling & hover dodging on No button
+    document.querySelectorAll('.no-btn').forEach(btn => {
+      ['mouseenter', 'mouseover', 'pointerenter', 'pointerover'].forEach(evt => {
+        btn.addEventListener(evt, (e) => dodgeButton(btn, e));
+      });
+      btn.addEventListener('touchstart', (e) => {
+        e.preventDefault();
+        dodgeButton(btn, e.touches[0] || e);
+      }, {passive:false});
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        dodgeButton(btn, e);
+      });
+    });
+
+    // Proximity listener on entire card for smooth magnetic repulsion
+    cardEl.addEventListener('pointermove', (e) => {
+      const activeBlock = document.getElementById('q-' + current);
+      if (!activeBlock) return;
+      const noBtn = activeBlock.querySelector('.no-btn');
+      if (!noBtn) return;
+
+      const rect = noBtn.getBoundingClientRect();
+      const btnCenterX = rect.left + rect.width / 2;
+      const btnCenterY = rect.top + rect.height / 2;
+      const dist = Math.hypot(e.clientX - btnCenterX, e.clientY - btnCenterY);
+
+      // Repel if cursor gets within 65px radius!
+      if (dist < 65){
+        dodgeButton(noBtn, e);
+      }
+    });
+  }
+
+  function launchHearts(n){
+    const icons = ['💗','💕','✨','💖','🥰','🌸'];
+    for (let i = 0; i < n; i++){
+      setTimeout(() => {
+        const h = document.createElement('div');
+        h.className = 'heart';
+        h.textContent = icons[Math.floor(Math.random() * icons.length)];
+        h.style.left = Math.random() * 100 + 'vw';
+        h.style.fontSize = (16 + Math.random() * 22) + 'px';
+        h.style.animationDuration = (3.5 + Math.random() * 3.5) + 's';
+        document.body.appendChild(h);
+        setTimeout(() => h.remove(), 8000);
+      }, i * 90);
+    }
+  }
+
+  function ambientHearts(){
+    setInterval(() => {
+      const icons = ['💗','💕','✨','🌸'];
+      const h = document.createElement('div');
+      h.className = 'heart';
+      h.textContent = icons[Math.floor(Math.random() * icons.length)];
+      h.style.left = Math.random() * 100 + 'vw';
+      h.style.fontSize = (13 + Math.random() * 16) + 'px';
+      h.style.animationDuration = (5 + Math.random() * 5) + 's';
+      document.body.appendChild(h);
+      setTimeout(() => h.remove(), 11000);
+    }, 1200);
+  }
+
+  window.restartQuiz = function(){
+    current = 0;
+    noAttempts = 0;
+    dotsEl.style.display = 'flex';
+    questionsEl.style.display = 'block';
+    finalEl.classList.remove('show');
+    showCurrent();
+  };
+
+  buildDots();
+  buildQuestions();
+  ambientHearts();
+</script>
+
+</body>
+</html>
